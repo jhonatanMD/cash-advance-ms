@@ -12,12 +12,11 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 public class EntityCashAdvance {
 	@Id
 	private String id;
-	private String docCli;
 	@JsonFormat(pattern = "yyyy-MM-dd", shape = Shape.STRING)
 	private Date dateRg;
 	private Double cash;
 	private String status;
-	private CustomerEntity customerEntity;
+	private HeadLineEntity customerEntity;
 	
 	public String getId() {
 		return id;
@@ -25,12 +24,7 @@ public class EntityCashAdvance {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDocCli() {
-		return docCli;
-	}
-	public void setDocCli(String docCli) {
-		this.docCli = docCli;
-	}
+
 	public Date getDateRg() {
 		return dateRg;
 	}
@@ -50,10 +44,10 @@ public class EntityCashAdvance {
 		this.status = status;
 	}
 	
-	public CustomerEntity getCustomerEntity() {
+	public HeadLineEntity getCustomerEntity() {
 		return customerEntity;
 	}
-	public void setCustomerEntity(CustomerEntity customerEntity) {
+	public void setCustomerEntity(HeadLineEntity customerEntity) {
 		this.customerEntity = customerEntity;
 	}
 	

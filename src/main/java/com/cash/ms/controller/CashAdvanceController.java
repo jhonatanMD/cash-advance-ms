@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cash.ms.model.EntityCashAdvance;
 import com.cash.ms.serivice.CashAdvanceServiceImpl;
+import com.cash.ms.serivice.ICashAdvanceService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -23,16 +24,16 @@ import reactor.core.publisher.Mono;
 public class CashAdvanceController {
 	
 	@Autowired
-	CashAdvanceServiceImpl imple;
+	ICashAdvanceService imple;
 	
 	@GetMapping("/getCashAdvances")
 	public Flux<EntityCashAdvance> getCashAdvances() {		
 		return imple.allCashAdvance();
 	}
 	
-	@GetMapping("/getCashAdvance/{docCli}")
-	public Mono<EntityCashAdvance> getCashAdvance(@PathVariable("docCli") String docCli) {		
-		return imple.cashAdvanceDocCli(docCli);
+	@GetMapping("/getCashAdvance/{numAcc}")
+	public Mono<EntityCashAdvance> getCashAdvance(@PathVariable("numAcc") String numAcc) {		
+		return imple.cashAdvanceDocCli(numAcc);
 	}
 	
 	@PostMapping("/postCashAdvance")
@@ -54,10 +55,10 @@ public class CashAdvanceController {
 		return imple.dltCashAdvance(id);
 	}
 
-	@PostMapping("/retiroCashAdvance/{docCli/{cash}")
-	public Mono<EntityCashAdvance> retiroCashAdvance(@PathVariable("docCli") String docCli , @PathVariable("cash")
+	@PostMapping("/retiroCashAdvance/{numAcc/{cash}")
+	public Mono<EntityCashAdvance> retiroCashAdvance(@PathVariable("numAcc") String numAcc , @PathVariable("cash")
 	Double cash){
-		return imple.cashAdvanceDocCli(docCli)
+		return imple.cashAdvanceDocCli(numAcc)
 				.flatMap(p ->{
 					if(p.getCash() >= cash) {
 						p.setCash(p.getCash() - cash);

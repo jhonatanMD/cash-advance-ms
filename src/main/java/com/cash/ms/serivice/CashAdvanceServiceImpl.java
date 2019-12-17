@@ -42,7 +42,7 @@ public class CashAdvanceServiceImpl implements ICashAdvanceService {
 	@Override
 	public Mono<EntityCashAdvance> cashAdvanceDocCli(String docCli) {
 		// TODO Auto-generated method stub
-		return repository.findByDocCli(docCli);
+		return repository.findByCashByDoc(docCli);
 	}
 
 }
