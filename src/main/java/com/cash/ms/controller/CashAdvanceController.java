@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cash.ms.model.EntityCashAdvance;
-import com.cash.ms.serivice.CashAdvanceServiceImpl;
 import com.cash.ms.serivice.ICashAdvanceService;
 
 import reactor.core.publisher.Flux;
