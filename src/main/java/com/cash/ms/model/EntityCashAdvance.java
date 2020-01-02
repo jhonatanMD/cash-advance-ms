@@ -16,6 +16,7 @@ public class EntityCashAdvance {
 	private Date dateRg;
 	private Double cash;
 	private String status;
+	private String Bank;
 	private HeadLineEntity customerEntity;
 	
 	public String getId() {
@@ -44,6 +45,12 @@ public class EntityCashAdvance {
 		this.status = status;
 	}
 	
+	public String getBank() {
+		return Bank;
+	}
+	public void setBank(String bank) {
+		Bank = bank;
+	}
 	public HeadLineEntity getCustomerEntity() {
 		return customerEntity;
 	}

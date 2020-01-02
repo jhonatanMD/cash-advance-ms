@@ -1,5 +1,6 @@
 package com.cash.ms.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ public class CashAdvanceController {
 	@GetMapping("/getCashAdvances")
 	public Flux<EntityCashAdvance> getCashAdvances() {		
 		return imple.allCashAdvance();
+	}
+	
+	@GetMapping("/getAdvanceDates/{dt1}/{dt2}/{bank}")
+	Flux<EntityCashAdvance> getAdvanceDates(@PathVariable("dt1") String dt1
+			,@PathVariable("dt2") String dt2,@PathVariable("bank") String bank) throws ParseException{	
+		return imple.findByBankAndDateOpenBetween(bank, dt1, dt2);
 	}
 	
 	@GetMapping("/getCashAdvance/{numAcc}")
